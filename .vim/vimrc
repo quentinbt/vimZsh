@@ -1,0 +1,12 @@
+set nocompatible
+runtime! config/**/*.vim
+call pathogen#infect()
+call pathogen#helptags()
+set mouse=a
+set relativenumber
+filetype plugin indent on
+syntax enable
+set tabstop=4
+set softtabstop=4
+set expandtab
+
