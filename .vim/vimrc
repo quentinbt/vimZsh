@@ -7,7 +7,9 @@ set relativenumber
 filetype plugin indent on
 filetype plugin on
 syntax enable
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set expandtab
 let g:NERDSpaceDelims = 1
+set background=dark
+set shiftwidth=4
