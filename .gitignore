@@ -6,3 +6,4 @@
 !.oh-my-zsh/*
 !.vim/*
 !README.md
+!.tmux.conf
