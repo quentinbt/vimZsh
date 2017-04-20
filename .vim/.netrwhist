@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/Quentin/Documents/workspace/asbestosApp'
-let g:netrw_dirhist_2='/Users/Quentin/Documents/workspace/votingApp'
-let g:netrw_dirhist_3='/Users/Quentin/Documents/workspace/backend'
-let g:netrw_dirhist_4='/Users/Quentin/Documents/workspace/backend/client'
-let g:netrw_dirhist_5='/Users/Quentin/Documents/workspace/backend'
-let g:netrw_dirhist_6='/Users/Quentin/Documents/workspace/backend/client'
-let g:netrw_dirhist_7='/Users/Quentin/Documents/workspace/backend'
