@@ -63,3 +63,5 @@ nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
+set hlsearch
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
