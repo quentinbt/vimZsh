@@ -1,9 +1,11 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" be iMproved, required
+set nocompatible              
+
+" required
+filetype off                  
+
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -33,48 +35,76 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-expand-region'
+Plug 'sjl/gundo.vim'
 
 " Initialize plugin system
 call plug#end()
 
+" leader key mapping
 let mapleader = "\<Space>"
+
+" copy pasta setting
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+" differents lead key shortcut
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>h :GundoToggle<CR>
+noremap <Leader>s :update<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>j :join<CR>
+nmap <Leader><Leader> V
+
+" undo settings
+set undodir=~/.vim/tmp/undo//
+set backupdir=~/.vim/tmp/backup//
+set undofile
+set history=100
+set undolevels=100
+
+" basic settings
 set relativenumber
-autocmd VimEnter * NERDTree | wincmd p
-autocmd FileType javascript,php autocmd BufWritePre <buffer> %s/\s\+$//e
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set background=dark
 let g:NERDDefaultAlign = 'left'
-noremap <Leader>s :update<CR>
 set number
-nmap <Leader>j :join<CR>
+inoremap ,, <ESC>
+vnoremap ,, <ESC>
+
+" move under the letter when the line is wrapped
 nnoremap j gj
 nnoremap k gk
 xnoremap j gj
 xnoremap k gk
+
+" move faster
 nmap J 5j
 nmap K 5k
 xmap J 5j
 xmap K 5k
+
+" move between vim panes
 nmap <C-l> gt
 nmap <C-h> gT
+
+" move between vim splits
 nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
+
+" search settings
 set hlsearch
+set incsearch
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
-inoremap ,, <ESC>
-vnoremap ,, <ESC>
+
+" expand plugin settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-nmap <Leader><Leader> V
 
 let g:ctrlp_use_caching = 0
 if executable('ag')
