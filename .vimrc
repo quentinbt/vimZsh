@@ -55,9 +55,13 @@ vmap <Leader>P "+P
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>h :GundoToggle<CR>
 noremap <Leader>s :update<CR>
+noremap <Leader>q :quit<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>j :join<CR>
 nmap <Leader><Leader> V
+nmap <Leader>ci mzgg=G`z
+nmap <Leader>io mzo<ESC>`z
+nmap <Leader>iO mzO<ESC>`z
 
 " undo settings
 set undodir=~/.vim/tmp/undo//
@@ -112,8 +116,8 @@ if executable('ag')
 
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+    let g:ctrlp_prompt_mappings = {
+                \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+                \ }
 endif
