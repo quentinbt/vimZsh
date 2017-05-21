@@ -63,6 +63,10 @@ nmap <Leader>ci mzgg=G`z
 nmap <Leader>io mzo<ESC>`z
 nmap <Leader>iO mzO<ESC>`z
 
+" usefull for caculus ex: type 8*8 then press ,. /!\ 
+" /!\ use bc instead, select in visual mode and type !bc
+"ino ,. <C-O>yiW<End>=<C-R>=<C-R>0<CR><ESC>
+
 " undo settings
 set undodir=~/.vim/tmp/undo//
 set backupdir=~/.vim/tmp/backup//
