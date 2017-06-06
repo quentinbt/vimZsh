@@ -36,6 +36,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-expand-region'
 Plug 'sjl/gundo.vim'
+Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 call plug#end()
@@ -59,7 +60,7 @@ noremap <Leader>q :quit<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>j :join<CR>
 nmap <Leader><Leader> V
-nmap <Leader>ci mzgg=G`z
+nmap <Leader>ii mzgg=G`zzz
 nmap <Leader>io mzo<ESC>`z
 nmap <Leader>iO mzO<ESC>`z
 
