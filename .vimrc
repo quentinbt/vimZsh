@@ -1,8 +1,14 @@
-" be iMproved, required
 set nocompatible              
 
 " required
 filetype off                  
+
+"auto install vim plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
@@ -17,7 +23,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Theme
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 " Functional
 Plug 'tpope/vim-surround'
@@ -28,15 +34,19 @@ Plug 'elzr/vim-json'
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gorodinskiy/vim-coloresque'
+"To execute Ctrl + y ,
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/tpope-vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-expand-region'
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/syntastic'
+Plug 'mbbill/undotree'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-dispatch'
 
 " Initialize plugin system
 call plug#end()
@@ -54,7 +64,7 @@ vmap <Leader>P "+P
 
 " differents lead key shortcut
 nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>h :GundoToggle<CR>
+nnoremap <Leader>h :UndotreeToggle<CR>
 noremap <Leader>s :update<CR>
 noremap <Leader>q :quit<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
@@ -64,21 +74,37 @@ nmap <Leader>ii mzgg=G`zzz
 nmap <Leader>io mzo<ESC>`z
 nmap <Leader>iO mzO<ESC>`z
 
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " usefull for caculus ex: type 8*8 then press ,. /!\ 
 " /!\ use bc instead, select in visual mode and type !bc
 "ino ,. <C-O>yiW<End>=<C-R>=<C-R>0<CR><ESC>
 
 " undo settings
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set undofile
-set history=100
-set undolevels=100
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+    set history=100
+    set undolevels=100
+endif
 
 " basic settings
 set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+syntax enable
 set background=dark
+colorscheme gruvbox
 let g:NERDDefaultAlign = 'left'
 set number
 inoremap ,, <ESC>
@@ -105,15 +131,70 @@ nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
 nmap gl <C-w>l
+nmap gr <C-w>r
 
 " search settings
 set hlsearch
 set incsearch
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
+" Write COMMIT_EDITMSG and push to current branch
+function! PushToCurrentBranch()
+  exe ":Gwrite"
+  let branch = fugitive#statusline()
+  let branch = substitute(branch, '\c\v\[?GIT\(([a-z0-9\-_\./:]+)\)\]?', $BRANCH.' \1', 'g')
+  exe ":Git push origin" . branch
+endfunction
+
+" pull origin to current branch
+function! PullToCurrentBranch()
+  let branch = fugitive#statusline()
+  let branch = substitute(branch, '\c\v\[?GIT\(([a-z0-9\-_\./:]+)\)\]?', $BRANCH.' \1', 'g')
+  exe ":Git pull origin" . branch
+endfunction
+
+" Fugitive shortcut
+set diffopt+=vertical
+nnoremap <leader>ts :Gstatus<CR>
+nnoremap <leader>tc :Gcommit -v -q<CR>
+nnoremap <leader>ta :Git add -A<CR>
+nnoremap <leader>tt :Gcommit -v -q %<CR>
+nnoremap <leader>td :Gdiff<CR>
+nnoremap <leader>tw :Gwrite<CR><CR>
+nnoremap <leader>tB :Gblame<CR>
+nnoremap <leader>tp :Ggrep<Space>
+nnoremap <leader>tm :Gmove<Space>
+nnoremap <leader>tb :Git checkout -b<Space>
+nnoremap <leader>to :Git checkout<Space>
+nnoremap <leader>tps :call PushToCurrentBranch()<CR>
+nnoremap <leader>tpl :call PullToCurrentBranch()<CR>
+
 " expand plugin settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+let g:expand_region_text_objects = {
+      \ 'iw'  :0,
+      \ 'iW'  :0,
+      \ 'i"'  :0,
+      \ 'i''' :0,
+      \ 'i]'  :1, 
+      \ 'ib'  :1, 
+      \ 'iB'  :1, 
+      \ 'il'  :0, 
+      \ 'ip'  :0,
+      \ 'ie'  :0, 
+      \ }
+"call expand_region#custom_text_objects({
+"      \ "\/\\n\\n\<CR>": 1, 
+"      \ 'a]' :1, 
+"      \ 'ab' :1, 
+"      \ 'aB' :1, 
+"      \ 'ii' :0, 
+"      \ 'ai' :0, 
+"      \ })
+
+" jsx syntax work on js files
+let g:jsx_ext_required = 0
 
 let g:ctrlp_use_caching = 0
 if executable('ag')
