@@ -47,6 +47,9 @@ Plug 'mbbill/undotree'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-dispatch'
+"<leader> ig to toggle
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 call plug#end()
@@ -81,6 +84,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " /!\ use bc instead, select in visual mode and type !bc
 "ino ,. <C-O>yiW<End>=<C-R>=<C-R>0<CR><ESC>
 
+let g:indentLine_enabled = 1
+let g:indentLine_char = '┆'
 " undo settings
 " Put plugins and dictionaries in this dir (also on Windows)
 let vimDir = '$HOME/.vim'
