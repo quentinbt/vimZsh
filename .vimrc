@@ -50,6 +50,8 @@ Plug 'tpope/vim-dispatch'
 "<leader> ig to toggle
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
+Plug 'wikitopian/hardmode'
+Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
@@ -66,6 +68,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 " differents lead key shortcut
+nnoremap <leader>x <Esc>:call ToggleHardMode()<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>h :UndotreeToggle<CR>
 noremap <Leader>s :update<CR>
@@ -76,6 +79,19 @@ nmap <Leader><Leader> V
 nmap <Leader>ii mzgg=G`zzz
 nmap <Leader>io mzo<ESC>`z
 nmap <Leader>iO mzO<ESC>`z
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+"nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
