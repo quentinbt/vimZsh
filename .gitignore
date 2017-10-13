@@ -3,7 +3,6 @@
 !.gitignore
 !.zshrc
 !.vimrc
-!.oh-my-zsh
 !.vim/UltiSnips/all.snippets
 !README.md
 !.tmux.conf
