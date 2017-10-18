@@ -124,6 +124,8 @@ set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 syntax enable
+"view on modifing element
+set cpoptions+=$
 set background=dark
 colorscheme gruvbox
 let g:NERDDefaultAlign = 'left'
