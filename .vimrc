@@ -139,6 +139,14 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
+" search regex improved
+nnoremap / /\v
+vnoremap / /\v
+
+" fastest access to console
+nnoremap ; :
+vnoremap ; :
+
 " move faster
 nmap J 5j
 nmap K 5k
