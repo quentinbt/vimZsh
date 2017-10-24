@@ -52,6 +52,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'Yggdroot/indentLine'
 Plug 'wikitopian/hardmode'
 Plug 'easymotion/vim-easymotion'
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
