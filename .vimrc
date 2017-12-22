@@ -53,6 +53,12 @@ Plug 'Yggdroot/indentLine'
 Plug 'wikitopian/hardmode'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
+Plug 'regedarek/ZoomWin'
+Plug 'majutsushi/tagbar'
+Plug 'craigemery/vim-autotag'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'thoughtbot/vim-rspec'
 
 " Initialize plugin system
 call plug#end()
@@ -72,14 +78,18 @@ vmap <Leader>P "+P
 nnoremap <leader>x <Esc>:call ToggleHardMode()<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>h :UndotreeToggle<CR>
+nnoremap <Leader>m :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>z :ZoomWin<CR>
 noremap <Leader>s :update<CR>
 noremap <Leader>q :quit<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>. :TagbarToggle<CR>
 nmap <Leader>j :join<CR>
 nmap <Leader><Leader> V
 nmap <Leader>ii mzgg=G`zzz
 nmap <Leader>io mzo<ESC>`z
 nmap <Leader>iO mzO<ESC>`z
+imap <S-\>    <CR><CR>end<Esc>-cc
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -124,6 +134,7 @@ endif
 set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 syntax enable
 "view on modifing element
 set cpoptions+=$
