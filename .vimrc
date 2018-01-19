@@ -59,6 +59,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
+Plug 'altercation/vim-colors-solarized'
 
 " Initialize plugin system
 call plug#end()
@@ -138,8 +139,8 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 syntax enable
 "view on modifing element
 set cpoptions+=$
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme solarized
 let g:NERDDefaultAlign = 'left'
 set number
 inoremap ,, <ESC>
