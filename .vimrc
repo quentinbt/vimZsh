@@ -29,7 +29,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
-Plug 'marijnh/tern_for_vim'
+"Plug 'marijnh/tern_for_vim'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -50,9 +50,9 @@ Plug 'tpope/vim-dispatch'
 "<leader> ig to toggle
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
-Plug 'wikitopian/hardmode'
+"Plug 'wikitopian/hardmode'
 Plug 'easymotion/vim-easymotion'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'regedarek/ZoomWin'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
@@ -60,6 +60,11 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
 Plug 'altercation/vim-colors-solarized'
+Plug 'Quramy/tsuquyomi'
+Plug 'posva/vim-vue'
+Plug 'Quramy/tsuquyomi-vue'
+Plug 'leafgarland/typescript-vim'
+Plug 'othree/html5.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -133,9 +138,11 @@ endif
 
 " basic settings
 set relativenumber
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype php setlocal ts=4 sts=4 sw=4
 syntax enable
 "view on modifing element
 set cpoptions+=$

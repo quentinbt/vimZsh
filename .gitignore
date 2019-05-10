@@ -6,3 +6,5 @@
 !.vim/UltiSnips/all.snippets
 !README.md
 !.tmux.conf
+!.gitignore
+!.gitignore_global

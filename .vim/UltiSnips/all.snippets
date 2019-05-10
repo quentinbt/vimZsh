@@ -63,3 +63,55 @@ snippet ngcomponent
     }
 }
 endsnippet
+
+
+snippet ngtest
+{
+import { async} from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing';
+import { Server } from 'ng-test-runner'
+
+import { authMockStart } from '../../helpers.spec'
+
+import { ${1:NomDuModule}Module } from '../${2:chemin-module}.module'
+import { ${3:NomDuComposant}Component } from './${4:chemin-composant}.component'
+
+import test, { App, expectThat, navigateToUrl } from 'ng-test-runner'
+
+describe('App component', () => {
+  let server: Server
+  let app: App
+
+  beforeEach(
+    async(() => {
+      app = test($1Module,  RouterTestingModule.withRoutes([]))
+      server = authMockStart(server)
+    })
+  )
+
+  afterEach(() => {
+    server.stop()
+  })
+
+  it(
+    'renders the component $3Component',
+    async(() => {
+      const comp = app.run($3Component)
+
+      comp.verify(expectThat.textOf('p').isEqualTo('$4 works!'))
+    })
+  )
+
+  it(
+    'naviguate properly to $3Component',
+    async(() => {
+      const comp = app.run($3Component)
+
+      comp.perform(navigateToUrl('/$4'))
+
+      comp.verify(expectThat.location.isEqualTo('/$4'))
+    })
+  )
+})
+}
+endsnippet

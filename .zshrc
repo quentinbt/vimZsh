@@ -113,7 +113,11 @@ export NVM_DIR="$HOME/.nvm"
 
 bindkey '^ ' autosuggest-accept
 
+export ANDROID_HOME=/Users/quentin/Library/Android/sdk
+export PATH=${PATH}:/Users/quentin/Library/Android/sdk/tools
+export PATH=${PATH}:/Users/quentin/Library/Android/sdk/platform-tools
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-eval $(thefuck --alias)
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
