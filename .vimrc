@@ -14,7 +14,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -30,7 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
 "Plug 'marijnh/tern_for_vim'
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gorodinskiy/vim-coloresque'
@@ -42,7 +42,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'terryma/vim-expand-region'
+"Plug 'terryma/vim-expand-region'
 Plug 'mbbill/undotree'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -61,8 +61,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Quramy/tsuquyomi'
-Plug 'posva/vim-vue'
-Plug 'Quramy/tsuquyomi-vue'
+"Plug 'posva/vim-vue'
+"Plug 'Quramy/tsuquyomi-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/html5.vim'
 
@@ -81,7 +81,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 " differents lead key shortcut
-nnoremap <leader>x <Esc>:call ToggleHardMode()<CR>
+"nnoremap <leader>x <Esc>:call ToggleHardMode()<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>h :UndotreeToggle<CR>
 nnoremap <Leader>m :call RunCurrentSpecFile()<CR>
@@ -221,20 +221,20 @@ nnoremap <leader>tps :call PushToCurrentBranch()<CR>
 nnoremap <leader>tpl :call PullToCurrentBranch()<CR>
 
 " expand plugin settings
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-let g:expand_region_text_objects = {
-      \ 'iw'  :0,
-      \ 'iW'  :0,
-      \ 'i"'  :0,
-      \ 'i''' :0,
-      \ 'i]'  :1, 
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :0, 
-      \ 'ip'  :0,
-      \ 'ie'  :0, 
-      \ }
+"vmap v <Plug>(expand_region_expand)
+"vmap <C-v> <Plug>(expand_region_shrink)
+"let g:expand_region_text_objects = {
+"      \ 'iw'  :0,
+"      \ 'iW'  :0,
+"      \ 'i"'  :0,
+"      \ 'i''' :0,
+"      \ 'i]'  :1, 
+"      \ 'ib'  :1, 
+"      \ 'iB'  :1, 
+"      \ 'il'  :0, 
+"      \ 'ip'  :0,
+"      \ 'ie'  :0, 
+"      \ }
 "call expand_region#custom_text_objects({
 "      \ "\/\\n\\n\<CR>": 1, 
 "      \ 'a]' :1, 
