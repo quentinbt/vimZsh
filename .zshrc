@@ -111,8 +111,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-bindkey '^ ' autosuggest-accept
-
 export ANDROID_HOME=/Users/quentin/Library/Android/sdk
 export PATH=${PATH}:/Users/quentin/Library/Android/sdk/tools
 export PATH=${PATH}:/Users/quentin/Library/Android/sdk/platform-tools
@@ -121,3 +119,16 @@ export PATH=${PATH}:/Users/quentin/Library/Android/sdk/platform-tools
 export PATH="$PATH:$HOME/.rvm/bin"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
+bindkey -v
+KEYTIMEOUT=1
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+bindkey '^ ' autosuggest-accept
+bindkey '^R' history-incremental-search-backward
