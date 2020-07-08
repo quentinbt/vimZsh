@@ -3,6 +3,7 @@ set nocompatible
 " required
 filetype off                  
 
+
 "auto install vim plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -17,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -28,7 +29,7 @@ Plug 'morhetz/gruvbox'
 " Functional
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'marijnh/tern_for_vim'
 "Plug 'elzr/vim-json'
 Plug 'tpope/vim-sensible'
@@ -45,7 +46,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'terryma/vim-expand-region'
 Plug 'mbbill/undotree'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-dispatch'
 "<leader> ig to toggle
 "Plug 'nathanaelkane/vim-indent-guides'
@@ -56,29 +57,34 @@ Plug 'easymotion/vim-easymotion'
 Plug 'regedarek/ZoomWin'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-Plug 'thoughtbot/vim-rspec'
+"Plug 'tpope/vim-rails'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'thoughtbot/vim-rspec'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Quramy/tsuquyomi'
 "Plug 'posva/vim-vue'
 "Plug 'Quramy/tsuquyomi-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/html5.vim'
+Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
 call plug#end()
 
+filetype off                  
 " leader key mapping
 let mapleader = "\<Space>"
 
+filetype off                  
 " copy pasta setting
 vmap <Leader>y "+y
 vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+nmap <Leader>p "*p
+nmap <Leader>P "*P
+vmap <Leader>p "*p
+vmap <Leader>P "*P
+set clipboard=unnamed
+
 
 " differents lead key shortcut
 "nnoremap <leader>x <Esc>:call ToggleHardMode()<CR>
@@ -205,7 +211,7 @@ function! PullToCurrentBranch()
 endfunction
 
 " Fugitive shortcut
-set diffopt+=vertical
+" set diffopt+=vertical
 nnoremap <leader>ts :Gstatus<CR>
 nnoremap <leader>tc :Gcommit -v -q<CR>
 nnoremap <leader>ta :Git add -A<CR>
