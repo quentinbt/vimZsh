@@ -61,12 +61,40 @@ Plug 'craigemery/vim-autotag'
 "Plug 'vim-ruby/vim-ruby'
 "Plug 'thoughtbot/vim-rspec'
 Plug 'altercation/vim-colors-solarized'
-Plug 'Quramy/tsuquyomi'
+"For angular
+"Plug 'Quramy/tsuquyomi'
 "Plug 'posva/vim-vue'
 "Plug 'Quramy/tsuquyomi-vue'
-Plug 'leafgarland/typescript-vim'
+"For angular
+"Plug 'leafgarland/typescript-vim'
 Plug 'othree/html5.vim'
 Plug 'rust-lang/rust.vim'
+"For react ts 1st version
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'ryanolsonx/vim-lsp-typescript'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
+"For vuejs
+Plug 'posva/vim-vue'
+"Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'leafOfTree/vim-vue-plugin'
+"let g:used_javascript_libs = 'vue'
+
+"For react ts 2st version
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-tsserver',
+  \ 'coc-vetur'
+  \ ]
+"Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'leafgarland/typescript-vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -112,6 +140,22 @@ nmap <Leader>g <Plug>(easymotion-overwin-f)
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 "nmap s <Plug>(easymotion-overwin-f2)
+"
+"
+"
+let g:vim_vue_plugin_config = { 
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['css'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 0,
+      \'debug': 0,
+      \}
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -147,6 +191,8 @@ set relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescriptreact setlocal ts=4 sts=4 sw=4
+autocmd Filetype json setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype php setlocal ts=4 sts=4 sw=4
 syntax enable
@@ -249,6 +295,20 @@ nnoremap <leader>tpl :call PullToCurrentBranch()<CR>
 "      \ 'ii' :0, 
 "      \ 'ai' :0, 
 "      \ })
+"
+
+nnoremap <leader>d :call CocAction('doHover')<CR>
+nmap <silent> gd <Plug>(coc-definition)
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " jsx syntax work on js files
 let g:jsx_ext_required = 0

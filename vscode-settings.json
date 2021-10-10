@@ -1,0 +1,149 @@
+{
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [",", ","],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "c", "<leader>"],
+      "commands": [
+          "editor.action.commentLine"
+      ]
+    },
+    {
+      "before": [",", ","],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "i", "i"],
+      "commands": [
+          "editor.action.formatDocument"
+      ]
+    },
+    {
+      "before": [";"],
+      "after": [":"]
+    },
+    {
+      "before": ["<leader>", "t", "o"],
+      "commands": [
+          "git.checkout"
+      ]
+    },
+    {
+      "before": ["<leader>", "t", "p", "s"],
+      "commands": [
+          "git.push"
+      ]
+    },
+    {
+      "before": ["<leader>", "t", "p", "l"],
+      "commands": [
+          "git.pull"
+      ]
+    },
+    {
+      "before": ["<leader>", "t", "c"],
+      "commands": [
+          "git.commit"
+      ]
+    },
+    {
+      "before": ["<leader>", "t", "a"],
+      "commands": [
+          "git.stageAll"
+      ]
+    },
+    {
+      "before": ["<leader>", "i", "o"],
+      "after": ["m" , "z", "o", "<Esc>", "`", "z"]
+    },
+    {
+      "before": ["<leader>", "i", "O"],
+      "after": ["m" , "z", "O", "<Esc>", "`", "z"]
+    },
+    {
+      "before": ["<leader>", "c", "<leader>"],
+      "commands": [
+          "editor.action.commentLine"
+      ]
+    },
+    {
+      "before": ["<leader>", "o"],
+      "commands": [
+          "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": [
+          "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    {
+      "before": ["g", "h"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["g", "l"],
+      "after": ["<C-w>", "l"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "after": ["V"]
+    },
+    {
+      "before": ["<leader>", "g"],
+      "after": ["leader", "leader", "s"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": [
+          "<leader>", "s"
+      ],
+      "commands": [
+          "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+          "<leader>", "q"
+      ],
+      "after" : [":", "q", "<enter>"]
+    }
+  ],
+
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "git.autofetch": true,
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "One Dark Pro",
+}
